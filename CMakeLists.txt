@@ -324,8 +324,11 @@ SET(INCLUDE_DIRS
 	$ENV{HOME}/EMAN2/anaconda2/include
 	$ENV{HOME}/anaconda2/include
 	$ENV{HOME}/include
+	$ENV{LIBRARY_INC}
 	$ENV{FFTWDIR}/include
 	$ENV{GSLDIR}/include
+	$ENV{LIBRARY_INC}
+	$ENV{LIBRARY_LIB}
 	/usr/local/include
 	/usr/local/cuda/include
 	$ENV{PREFIX}/include/freetype2
@@ -342,8 +345,10 @@ SET(LIB_DIRS
 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
 	$ENV{EMANDIR}/lib
 	$ENV{HOME}/EMAN2/anaconda2/lib
+	$ENV{LIBRARY_LIB}
 	$ENV{HOME}/anaconda2/lib
 	$ENV{HOME}/lib
+	$ENV{LIBRARY_LIB}
 	${PLATFORMLIB}
 	$ENV{FFTWDIR}/lib
 	$ENV{GSLDIR}/lib
