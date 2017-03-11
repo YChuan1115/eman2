@@ -6,7 +6,7 @@ rm -rf $build_dir
 mkdir -p $build_dir
 cd $build_dir
 
-cmake $SRC_DIR
+cmake $SRC_DIR -DENABLE_RT=OFF -DENABLE_OPTIMIZE_X86_64=ON
 
 make -j${CPU_COUNT}
 make install
