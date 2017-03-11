@@ -5,6 +5,9 @@ package:
 source:
     path: {{ RECIPE_DIR }}/../..
 
+build:
+    number: 0
+
 requirements:
     {% set reqs_common = [
             "python 2.7.*",
