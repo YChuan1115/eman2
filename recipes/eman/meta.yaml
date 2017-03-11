@@ -24,6 +24,7 @@ requirements:
     build:
         - cmake
         - szip  # [win]
+        - toolchain
         - msinttypes  # [win]
         
         {% for req in reqs_common %}
