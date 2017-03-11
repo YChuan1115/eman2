@@ -5,6 +5,13 @@ package:
 source:
     path: {{ RECIPE_DIR }}/../..
 
+build:
+    skip_compile_pyc:
+        - bin/*.py
+        - lib/*.py
+        - lib/pyemtbx/*.py
+        - examples/*.py
+
 requirements:
     {% set reqs_common = [
             "python 2.7.*",
