@@ -1,8 +1,13 @@
 #!/bin/bash
 
+if [ "${EMAN_PYDUSA_FLAGS}" == "-h" ] || [ "${EMAN_PYDUSA_FLAGS}" == "--help" ];then
+    ./configure -h
+    exit
+fi
+
 export CFLAGS="-I${PREFIX}/include"
 
-./configure --prefix=${SP_DIR}
+./configure --prefix=${SP_DIR} ${EMAN_PYDUSA_FLAGS}
 
 sed -i.bak 's~\(^LDFLAGS.*$\)~\1 -L/'"${PREFIX}"'/lib -lfftw3_mpi -lfftw3~' src/Makefile
 

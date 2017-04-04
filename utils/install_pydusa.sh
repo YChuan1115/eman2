@@ -3,6 +3,7 @@
 set -xe
 
 source activate
+export EMAN_PYDUSA_FLAGS="${@}"
 
 RECIPE_DIR="${CONDA_PREFIX}/recipes"
 conda build ${RECIPE_DIR}/fftw-mpi

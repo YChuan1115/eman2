@@ -9,6 +9,8 @@ source:
 build:
     number: 0
     skip: True  # [win or py3k]
+    script_env:
+        - EMAN_PYDUSA_FLAGS
 
 requirements:
     build:
