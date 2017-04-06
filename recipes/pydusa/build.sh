@@ -8,6 +8,7 @@ if [ "${EMAN_PYDUSA_FLAGS}" == "-h" ] || [ "${EMAN_PYDUSA_FLAGS}" == "--help" ];
 fi
 
 export CFLAGS="-I${PREFIX}/include"
+#export LDFLAGS="-L${SYS_PREFIX}/lib -lfftw3_mpi -lfftw3 -lm "
 
 ./configure --prefix=${SP_DIR} ${EMAN_PYDUSA_FLAGS}
 
