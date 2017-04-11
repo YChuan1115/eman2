@@ -14,6 +14,7 @@ fi
 
 export LDFLAGS="-L${PREFIX}/lib"
 export CFLAGS="${CFLAGS} -I${PREFIX}/include"
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 CONFIGURE="./configure --prefix=$PREFIX --with-pic --enable-shared --enable-threads --disable-fortran --enable-mpi"
 
