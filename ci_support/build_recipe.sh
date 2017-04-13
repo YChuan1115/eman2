@@ -17,6 +17,5 @@ source ${HOME}/miniconda2/bin/activate root
 conda config --set show_channel_urls true
 
 
-conda install conda-build -c defaults --yes --quiet
-
+conda build purge
 conda build recipes/eman -c cryoem -c defaults -c conda-forge
