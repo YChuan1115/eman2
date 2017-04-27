@@ -19,12 +19,6 @@ requirements:
         - numpy
         - fftw-mpi
 
-test:
-  requires:
-    - openmpi
-  imports:
-    - mpi
-
 about:
   license: GPL-2.0
   summary: Pydusa is a package for parallel programming using Python.
