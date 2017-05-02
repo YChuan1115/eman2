@@ -1,3 +1,5 @@
+{% set numpy_minor_version="9" %}
+
 package:
     name: pydusa
     version: 1.15
@@ -13,10 +15,10 @@ build:
 requirements:
     build:
         - python
-        - numpy
+        - numpy 1.{{ numpy_minor_version }}.*
         - fftw-mpi
     run:
-        - numpy
+        - numpy 1.{{ numpy_minor_version }}.*
         - fftw-mpi
 
 test:

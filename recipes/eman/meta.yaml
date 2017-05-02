@@ -1,3 +1,5 @@
+{% set numpy_minor_version="9"  %}
+
 package:
     name: eman2
     version: 2.2
@@ -10,7 +12,7 @@ requirements:
             "python 2.7.*",
             "boost 1.61.*",
             "fftw-mpi",
-            "numpy",
+            "numpy 1." + numpy_minor_version + ".*",
             "ftgl",
             "freetype",
             "gsl",
