@@ -12,7 +12,7 @@ MARK_AS_ADVANCED(CLEAR CMAKE_VERBOSE_MAKEFILE)
 OPTION(CMAKE_VERBOSE_MAKEFILE "if all commands will be echoed to the console during the make" ON)
 
 OPTION(ENABLE_CONDA "enable conda-supported build" ON)
-
+message("ENVPATH: $ENV{PATH}")
 if("$ENV{CONDA_BUILD_STATE}" STREQUAL "BUILD" OR ENABLE_CONDA)
 	if("$ENV{CONDA_BUILD_STATE}" STREQUAL "BUILD" )
 		set(CONDA_SP_DIR $ENV{SP_DIR})
@@ -30,9 +30,34 @@ if("$ENV{CONDA_BUILD_STATE}" STREQUAL "BUILD" OR ENABLE_CONDA)
 		execute_process(COMMAND ${CONDA_PREFIX}/bin/python -c "import site; print site.getsitepackages()[0]"
 						OUTPUT_VARIABLE CONDA_SP_DIR
 						OUTPUT_STRIP_TRAILING_WHITESPACE
+#		set(ENVPATH $ENV{PATH})
+#		message("ENVPATH: ${ENVPATH}")
+#		file(TO_CMAKE_PATH ${ENVPATH} ENVPATH)
+#		message("ENVPATH: ${ENVPATH}")
+#		list(GET ENVPATH 0 ENVPATH)
+#			file(TO_CMAKE_PATH ${ENVPATH}/.. CONDA_PREFIX)
+#		message("ENVPATH: ${ENVPATH}")
+#					       $ENV{HOME}/anaconda
+#					       $ENV{HOME}/anaconda2
+#					       $ENV{HOME}/miniconda
+#					       $ENV{HOME}/miniconda2
+#					       $ENV{HOME}/Anaconda
+#					       $ENV{HOME}/Anaconda2
+#					       $ENV{HOME}/Miniconda
+#					       $ENV{HOME}/Miniconda2
+#					 PATH_SUFFIXES bin
+#		file(TO_CMAKE_PATH ${CONDA_PREFIX}/.. CONDA_PREFIX)
+#		execute_process(COMMAND ${CONDA_EXECUTABLE} info --root
+#						OUTPUT_VARIABLE CONDA_PREFIX
+#						OUTPUT_STRIP_TRAILING_WHITESPACE
+#					   )
+#		
 					   )
 	endif()
-		
+	message("CONDA_EXECUTABLE: ${CONDA_EXECUTABLE}")
+	message("CONDA_PREFIX: ${CONDA_PREFIX}")
+	message("CONDA_SP_DIR: ${CONDA_SP_DIR}")
+#	message(FATAL_ERROR "EXIT")
 	set(EMAN_PY_INSTALL_PREFIX ${CONDA_SP_DIR})
 		
 	SET(EMAN_INSTALL_PREFIX ${CONDA_PREFIX} CACHE PATH "installation prefix")
@@ -653,6 +678,7 @@ FIND_PATH(NUMPY_INCLUDE_PATH numpy/arrayobject.h
 
 if("$ENV{CONDA_BUILD_STATE}" STREQUAL "BUILD" OR ENABLE_CONDA)
 	message("NUMPY_INCLUDE_PATH: ${NUMPY_INCLUDE_PATH}")
+	message("NUMPY_INCLUDE_PATH: ${CONDA_SP_DIR}/numpy/core/include")
 endif()
 
 INCLUDE_DIRECTORIES(${NUMPY_INCLUDE_PATH})
