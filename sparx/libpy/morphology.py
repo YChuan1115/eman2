@@ -2253,8 +2253,8 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
 
 	if Cs == 0.0:
-		Cs = 0.01
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
+		Cs = 0.001
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -3386,8 +3386,8 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
 
 	if Cs == 0.0:
-		Cs = 0.01
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
+		Cs = 0.001
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -5827,8 +5827,8 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
 
 	if Cs == 0.0:
-		Cs = 0.01
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
+		Cs = 0.001
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
