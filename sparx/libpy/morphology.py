@@ -2248,9 +2248,13 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 	# --------------------------------------------------------------------------------
 	if pixel_size <= 0.0:
 		error_message_list.append("Pixel size (%f) must not be negative. Please set a pasitive value larger than 0.0 to pixel_size option." % (pixel_size))
-	
+
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
+
+	if Cs == 0.0:
+		Cs = 0.01
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -3380,6 +3384,10 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 	
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
+
+	if Cs == 0.0:
+		Cs = 0.01
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -5814,9 +5822,13 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 	# --------------------------------------------------------------------------------
 	if pixel_size <= 0.0:
 		error_message_list.append("Pixel size (%f) must not be negative. Please set a pasitive value larger than 0.0 to pixel_size option." % (pixel_size))
-	
+
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
+
+	if Cs == 0.0:
+		Cs = 0.01
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.01" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -6398,11 +6410,11 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 							envl.set_value_at(i, j, (1. - dr) * en[ir] + dr * en[ir + 1] )
 
 			qse = threshold((qa - bckg))/envl
-			del envl, baseline, envelope
 			#(qse*mask).write_image("rs2.hdf")
 			#bckg.write_image("bckg.hdf")
 			#envl.write_image("envl.hdf")
 			#qse.write_image("qse.hdf")
+			del envl, baseline, envelope
 			#exit()
 			##  SIMULATION
 			#bang = 0.7
@@ -6565,6 +6577,7 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 					ssubroo[i]  = sqrt(max(0.0, ssubroo[i]-kboot*asubroo[i]**2)/kboot)
 					sen[i]     /= kboot
 				"""
+				print " ad1, Cs, voltage, pixel_size, temp, ed1, bd1, cd1 ",ad1, Cs, voltage, pixel_size, temp, ed1, bd1, cd1
 				lnsb = len(subpw)
 				try:		crot2 = rotavg_ctf(ctf_rimg(wn, generate_ctf([ad1, Cs, voltage, pixel_size, temp, ed1, bd1, cd1]), sign=0), ad1, Cs, voltage, pixel_size, temp, ed1, bd1, cd1)[:lnsb]
 				except:		crot2 = [0.0] * lnsb
@@ -6611,10 +6624,11 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 						# print "MRK_DEBUG: Trough Search: extremum_i = %03d, freq[extremum_i] = %12.5g, extremum_counts = %03d, (pwrot1[extremum_i] - pwrot2[extremum_i]) = %12.5g, extremum_diff_sum = %12.5g " % (extremum_i, freq[extremum_i] , extremum_counts, (pwrot1[extremum_i] - pwrot2[extremum_i]), extremum_diff_sum)
 						is_peak_target = True
 					pre_crot2_val = cur_crot2_val
-				if extremum_counts == 0: ERROR("Logical Error: Encountered unexpected zero extremum counts. Consult with the developer." % (bd1), "%s in %s" % (__name__, os.path.basename(__file__))) # MRK_ASSERT
-				extremum_diff_avg = extremum_diff_sum / extremum_counts
+				#if extremum_counts == 0: ERROR("Logical Error: Encountered unexpected zero extremum counts. Consult with the developer." % (bd1), "%s in %s" % (__name__, os.path.basename(__file__))) # MRK_ASSERT
+				extremum_diff_avg = 1.1#extremum_diff_sum / extremum_counts
 				
-				# print "MRK_DEBUG: extremum_avg = %12.5g, extremum_diff_sum = %12.5g, extremum_counts = %03d," % (extremum_avg, extremum_diff_sum, extremum_counts)
+				#print "MRK_DEBUG: extremum_avg = %12.5g, extremum_diff_sum = %12.5g, extremum_counts = %03d," % (extremum_avg, extremum_diff_sum, extremum_counts)
+				#print "MRK_DEBUG: extremum_diff_avg = %12.5g, extremum_diff_sum = %12.5g, extremum_counts = %03d," % (extremum_diff_avg, extremum_diff_sum, extremum_counts)
 				
 #				if stack == None:     cmd = "echo " + "    " + namics[ifi] + "  >>  " + fou
 #				else:                 cmd = "echo " + "    " + "  >>  " + fou
@@ -6767,9 +6781,9 @@ def defocusgett_vpp(roo, nx, voltage=300.0, Pixel_size=1.0, Cs=2.0, f_start=-1.0
 		from utilities import write_text_row
 		write_text_row(toto,"toto1.txt")
 		print " >>>>>>>>>  ",defi,data[7],simpw1d_print(defi, data)#,generate_ctf([defi, Cs, voltage, Pixel_size, 0.0, ampcont])
-		data[7]=10.
-		defi = 4.5
-		print " >>>>>>>>>  ",defi,data[7],simpw1d_print(defi, data)#,generate_ctf([defi, Cs, voltage, Pixel_size, 0.0, ampcont])
+		#data[7]=10.
+		#defi = 4.5
+		#print " >>>>>>>>>  ",defi,data[7],simpw1d_print(defi, data)#,generate_ctf([defi, Cs, voltage, Pixel_size, 0.0, ampcont])
 		#def1 = defi
 	#exit()
 	#'''
