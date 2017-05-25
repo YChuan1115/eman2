@@ -2254,7 +2254,7 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 
 	if Cs == 0.0:
 		Cs = 0.001
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001")
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -3383,7 +3383,7 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 		error_message_list.append("Pixel size (%f) must not be negative. Please set a pasitive value larger than 0.0 to pixel_size option." % (pixel_size))
 	
 	if wn <= 0.0:
-		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
+		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option.")
 
 	if Cs == 0.0:
 		Cs = 0.001
@@ -5828,7 +5828,7 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 
 	if Cs == 0.0:
 		Cs = 0.001
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
+		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001")
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
