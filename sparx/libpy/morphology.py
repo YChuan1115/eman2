@@ -2358,7 +2358,7 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 			print("Checking the input directory...")
 			input_mic_path_list = glob.glob(mic_pattern)
 			# Check error condition of input  file path list
-			print("Found %d microgarphs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
+			print("Found %d micrographs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
 			if len(input_mic_path_list) == 0:
 				# The result shouldn't be empty if the specified  file name pattern is invalid
 				error_status = ("There are no s whose paths match with the specified file path pattern (%s) for %s. Please check input_image_path. Run %s -h for help." % (mic_pattern, cter_mode_name, program_name), getframeinfo(currentframe()))
@@ -3492,7 +3492,7 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 			print("Checking the input directory...")
 			input_mic_path_list = glob.glob(mic_pattern)
 			# Check error condition of input  file path list
-			print("Found %d microgarphs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
+			print("Found %d micrographs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
 			if len(input_mic_path_list) == 0:
 				# The result shouldn't be empty if the specified  file name pattern is invalid
 				error_status = ("There are no s whose paths match with the specified file path pattern (%s) for %s. Please check input_image_path. Run %s -h for help." % (mic_pattern, cter_mode_name, program_name), getframeinfo(currentframe()))
@@ -5934,7 +5934,7 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 			print("Checking the input directory...")
 			input_mic_path_list = glob.glob(mic_pattern)
 			# Check error condition of input  file path list
-			print("Found %d microgarphs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
+			print("Found %d micrographs in %s." % (len(input_mic_path_list), os.path.dirname(mic_pattern)))
 			if len(input_mic_path_list) == 0:
 				# The result shouldn't be empty if the specified  file name pattern is invalid
 				error_status = ("There are no s whose paths match with the specified file path pattern (%s) for %s. Please check input_image_path. Run %s -h for help." % (mic_pattern, cter_mode_name, program_name), getframeinfo(currentframe()))
