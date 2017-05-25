@@ -2251,10 +2251,6 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
-
-	if Cs == 0.0:
-		Cs = 0.001
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001")
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -2301,6 +2297,12 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 			if check_consistency:
 				print(" ")
 				print("WARNING!!! --check_consistency option will be ignored in %s." % (cter_mode_name))
+			if Cs == 0.0:
+				print(" ")
+				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
+
+		if Cs == 0.0:  Cs = 0.001
+
 		# else: 
 		# 	assert (not stack_mode)
 		# 	# No warnings
@@ -3384,10 +3386,6 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 	
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option.")
-
-	if Cs == 0.0:
-		Cs = 0.001
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001" % (Cs))
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -3434,6 +3432,11 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 			if check_consistency:
 				print(" ")
 				print("WARNING!!! --check_consistency option will be ignored in %s." % (cter_mode_name))
+			if Cs == 0.0:
+				print(" ")
+				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
+
+		if Cs == 0.0:  Cs = 0.001
 		# else: 
 		# 	assert (not stack_mode)
 		# 	# No warnings
@@ -5825,10 +5828,6 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 
 	if wn <= 0.0:
 		error_message_list.append("CTF window size (%d) must not be negative. Please set a valid value larger than 0 to wn option." % (wn))
-
-	if Cs == 0.0:
-		Cs = 0.001
-		error_message_list.append("Cs cannot be set to zero dur to numberical problems. It was reset to 0.001")
 	
 	# --------------------------------------------------------------------------------
 	# Print all error messages and abort the process if necessary.
@@ -5875,6 +5874,11 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 			if check_consistency:
 				print(" ")
 				print("WARNING!!! --check_consistency option will be ignored in %s." % (cter_mode_name))
+			if Cs == 0.0:
+				print(" ")
+				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
+
+		if Cs == 0.0:  Cs = 0.001
 		# else: 
 		# 	assert (not stack_mode)
 		# 	# No warnings
