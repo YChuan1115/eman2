@@ -2301,7 +2301,7 @@ def cter_mrk(input_image_path, output_directory, selection_list = None, wn = 512
 				print(" ")
 				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
 
-		if Cs == 0.0:  Cs = 0.001
+	if Cs == 0.0:  Cs = 0.001
 
 		# else: 
 		# 	assert (not stack_mode)
@@ -3436,7 +3436,7 @@ def cter_pap(input_image_path, output_directory, selection_list = None, wn = 512
 				print(" ")
 				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
 
-		if Cs == 0.0:  Cs = 0.001
+	if Cs == 0.0:  Cs = 0.001
 		# else: 
 		# 	assert (not stack_mode)
 		# 	# No warnings
@@ -5878,7 +5878,7 @@ def cter_vpp(input_image_path, output_directory, selection_list = None, wn = 512
 				print(" ")
 				print("WARNING!!! Cs cannot be set to zero due to numberical problems. It is reset to 0.001")
 
-		if Cs == 0.0:  Cs = 0.001
+	if Cs == 0.0:  Cs = 0.001
 		# else: 
 		# 	assert (not stack_mode)
 		# 	# No warnings
